@@ -153,7 +153,7 @@ $$
 
 我们希望样本在特征空间内线性可分，因此特征空间的好坏对支持向量机的性能至关重要。需要注意的是，在不知道特征映射的形式时，我们并不知道什么样的核函数最合适，而核函数也仅是隐式地定义了这个特征空间。于是，“核函数选择”成为支持向量机的最大变数。若核函数选择不佳，很可能导致性能不佳！！
 
-![hehanshu](Machine_Learning_Cornerstone\SVM\pic\hehanshu.png)
+![hehanshu](Machine_Learning_Cornerstone/SVM/pic/hehanshu.png)
 
 
 
