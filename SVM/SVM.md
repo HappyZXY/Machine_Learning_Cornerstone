@@ -97,7 +97,15 @@ $$
 L(w, b, \alpha)=\frac{1}{2}\|w\|^{2}+\sum_{i=1}^{m} \alpha_{i}\left(1-y_{i}\left(w^{T} \boldsymbol{x}_{i}+b\right)\right) \quad
 \quad \quad \quad (6.8)
 $$
-其中，$\alpha=\alpha_1;\alpha_2;...;\alpha_m$。令$L(w, b, \alpha)$对$w$和$b$的偏导为零可得
+上述问题的等价问题为：
+$$
+\min -\max L(w, b, \alpha)
+$$
+其对偶问题为：
+$$
+\max -\min L(w, b, \alpha)
+$$
+先求**min(L)**，$\alpha=\alpha_1;\alpha_2;...;\alpha_m$。令$L(w, b, \alpha)$对$w$和$b$的偏导为零可得
 $$
 \boldsymbol{w}=\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i} \quad \quad \quad (6.9)
 $$
@@ -133,7 +141,7 @@ f(\boldsymbol{x}) &=\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b \\
 &=\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}^{\mathrm{T}} \boldsymbol{x}+b .
 \end{aligned} \quad \quad \quad \quad \quad (6.12)
 $$
-从对偶问题(6.11)解出的$\alpha_i$是式(6.8)中的拉格朗日乘子，它恰对应训练样本$(\boldsymbol{x}_i,y_i)$。如果能满足KKT条件，原始问题=对偶问题。
+从对偶问题(6.11)解出的$\alpha_i$是式(6.8)中的拉格朗日乘子，它恰对应训练样本$(\boldsymbol{x}_i,y_i)$。如果能满足KKT条件，**原始问题=对偶问题**。
 $$
 \left\{\begin{array}{l}
 \alpha_{i} \geqslant 0 ; \\
@@ -141,6 +149,8 @@ y_{i} f\left(\boldsymbol{x}_{i}\right)-1 \geqslant 0 ; \\
 \alpha_{i}\left(y_{i} f\left(\boldsymbol{x}_{i}\right)-1\right)=0
 \end{array}\right.
 $$
+<font color='darkblue'>模型最终转化成参数为$\alpha$的函数，求最大值问题，也就是有$w$,$b$两个参数变成一个参数</font>
+
 于是，对于任意训练样本$(\boldsymbol{x}_i,y_i)$，总$\alpha_i =0 $有或$y_if(\boldsymbol{x_i}=1)$。若，则该样本将不会在（6.12）的求和中出现，也就不会对$f(\boldsymbol{x})$有任何影响；若$\alpha_i$>0，则必有$y_if(\boldsymbol{x_i}=1)$，所对应的样本点位于最大间隔边界上，是一个支持向量。这显示出支持向量机的一个重要特性：训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。
 
 那么现在的问题重点又转到求解式子（6.11），不难发现这是一个二次规划问题，可使用通过的二次规划算法来求解，该问题的规模正比于训练样本数，这会在实际任务中造成很大的开销，为了避免这个问题，人们通过利用问题本身的特性，提出了很多高效的算法，SMO(Sequential Minimal Optimization)是一个代表，SMO的思想是先固定$\alpha_i$之外的所有参数，然后求$\alpha_i$上的极值。
