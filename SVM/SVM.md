@@ -163,7 +163,7 @@ $$
 
 我们希望样本在特征空间内线性可分，因此特征空间的好坏对支持向量机的性能至关重要。需要注意的是，在不知道特征映射的形式时，我们并不知道什么样的核函数最合适，而核函数也仅是隐式地定义了这个特征空间。于是，“核函数选择”成为支持向量机的最大变数。若核函数选择不佳，很可能导致性能不佳！！
 
-![hehanshu](E:\mygithubProjects\Machine_Learning_Cornerstone\SVM\pic\hehanshu.png)
+![hehanshu](Machine_Learning_Cornerstone/SVM/pic/hehanshu.png)
 
 
 
@@ -173,7 +173,7 @@ $$
 
 缓解这个问题的一个办法是**允许支持向量机在一些样本上的出错**。为此，要引入“软间隔”（soft margin）的概念，如下图6.4所示：
 
-![ruanjiange](E:\mygithubProjects\Machine_Learning_Cornerstone\SVM\pic\ruanjiange.png)
+![ruanjiange](Machine_Learning_Cornerstone\SVM\pic\ruanjiange.png)
 
 前面介绍的支持向量机形式时保证所有样本正确划分，这称为“硬间隔”（hard margin），而软间隔是允许某些样本不满足条件：
 $$
@@ -213,7 +213,7 @@ $$
 
 这就是常用的“软间隔支持向量机”。
 
-![tidai](E:\mygithubProjects\Machine_Learning_Cornerstone\SVM\pic\tidai.png)
+![tidai](Machine_Learning_Cornerstone\SVM\pic\tidai.png)
 
 显然，式（6.35）中每个样本都有一个对应的松弛变量，用以表征该样本不满足约束（6.28）的程度。但是，与式（6.6）相似这仍然是一个二次规划问题。于是，类似（6.8），通过拉格朗日乘子法可得到式（6.35）的拉格朗日函数：
 $$
